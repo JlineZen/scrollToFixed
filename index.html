@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="scroll.js"></script>
+	<title>scrollabe div sticky fix</title>
+	<style type="text/css">
+		*, *:before, *:after {
+			box-sizing: border-box;
+		}
+		body, h1, h2 {
+			margin: 0;
+		}
+		body {
+			font-family: 'microsoft yahei';
+		}
+		#master-container {
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+		}
+		#nav-container {
+			width: 100%;
+			height: 100px;
+			color: #FFFFFF;
+			font-size: 24px;
+			text-align: center;
+			line-height: 100px;
+			background-color: pink;
+		}
+		#content {
+			flex: 1;
+			display: flex;
+			overflow: hidden;
+		}
+		#left-container {
+			width: 200px;	
+			background-color: green;
+		}
+		#main-container {
+			flex: 1;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+		#main-container .content {
+			width: 100%;
+			height: 860px;
+			background-color: #fff;
+		}
+		#main-container::-webkit-scrollbar {
+			display: none;
+		}
+		.content h2.task-head {
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			font-weight: 400;
+			background-color: gray;
+			color: #fff;
+			padding: 0 15px;
+		}
+		.content .text-content {
+			padding: 25px;
+			color: #FFFFFF;
+			line-height: 20px;
+			text-indent: 20px;
+			background-color: lightgreen;
+		}
+	</style>
+</head>
+<body>
+	<div id="master-container">
+		<div id="nav-container">Nav Content</div>
+		<div id="content">
+			<div id="left-container"></div>
+			<div id="main-container">
+				<div class="content">
+					<h2 class="task-head">OUTSTANDING</h2>
+					<div class="text-content">
+						在两个语句的执行中，实现整个操作过程如下：首先创建一个能容纳10个字符串的新字符串，然后在这个字符串中填充  "java"和"script"，最后一步是销毁原来的字符串"Java"和"script"，因为这两个字符串已经没有用了。某些旧版浏览  器实现字符串比较慢是因为没有销毁原来的字符串. <br />
+						解析：<br />
+					  + 对于含有数字的字符串计算时，先转化为数字，在进行加减; <br />
+					  + 对于不含有数字的字符串，返回NaN; <br />
+					  + 对于布尔值时，布尔值将转化为数值(true为1, false为0); <br />
+					  + 对于浮点型时，直接加减; <br />
+					  + 对于对象，先调用对象的valueOf方法，已取得可供操作的值<br />
+					</div>
+					<h2 class="task-head">MARCH</h2>
+					<div class="text-content">
+						在两个语句的执行中，实现整个操作过程如下：首先创建一个能容纳10个字符串的新字符串，然后在这个字符串中填充  "java"和"script"，最后一步是销毁原来的字符串"Java"和"script"，因为这两个字符串已经没有用了。某些旧版浏览  器实现字符串比较慢是因为没有销毁原来的字符串。<br />
+						解析：<br />
+					  + 对于含有数字的字符串计算时，先转化为数字，在进行加减; <br />
+					  + 对于不含有数字的字符串，返回NaN; <br />
+					  + 对于布尔值时，布尔值将转化为数值(true为1, false为0); <br />
+					  + 对于浮点型时，直接加减; <br />
+					  + 对于对象，先调用对象的valueOf方法，已取得可供操作的值<br />
+					</div>
+					<h2 class="task-head">MAY</h2>
+					<div class="text-content">
+						在两个语句的执行中，实现整个操作过程如下：首先创建一个能容纳10个字符串的新字符串，然后在这个字符串中填充  "java"和"script"，最后一步是销毁原来的字符串"Java"和"script"，因为这两个字符串已经没有用了。某些旧版浏览  器实现字符串比较慢是因为没有销毁原来的字符串。<br />
+						解析：<br />
+					  + 对于含有数字的字符串计算时，先转化为数字，在进行加减; <br />
+					  + 对于不含有数字的字符串，返回NaN; <br />
+					  + 对于布尔值时，布尔值将转化为数值(true为1, false为0); <br />
+					  + 对于浮点型时，直接加减; <br />
+					  + 对于对象，先调用对象的valueOf方法，已取得可供操作的值<br />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
