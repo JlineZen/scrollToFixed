@@ -1,0 +1,26 @@
+{
+  "name": "scrolltofixed",
+  "version": "1.0.0",
+  "description": "a javascript plugin",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JlineZen/scrollToFixed.git"
+  },
+  "keywords": [
+    "fixed"
+  ],
+  "author": "bjiang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JlineZen/scrollToFixed/issues"
+  },
+  "homepage": "https://github.com/JlineZen/scrollToFixed#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "1.5.3"
+  }
+}
