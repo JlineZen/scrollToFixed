@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<script type="text/javascript" src="scroll.js"></script>
+	<script type="text/javascript" src="src/scrollToFixed.js"></script>
 	<title>scrollabe div sticky fix</title>
 	<style type="text/css">
 		*, *:before, *:after {
@@ -109,5 +109,10 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		var elems = document.querySelectorAll('.task-head');
+		var context = document.getElementById('main-container');
+		var fixed = new scrollToFixed(elems, { context: context });
+	</script>
 </body>
 </html>
