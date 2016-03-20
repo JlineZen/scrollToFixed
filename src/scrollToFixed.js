@@ -1,6 +1,7 @@
 (function() {
-	var root = this;
-	var nativeEach = Array.prototype.forEach;
+	var root = this,
+			nativeEach = Array.prototype.forEach,
+			slice = [].slice;
 
 	function each(obj, callback, context) {
 		if (!obj) return;
@@ -29,7 +30,17 @@
 		if (elem.currentStyle) {
 			return elem.currentStyle[prop];
 		} else if (window.getComputedStyle) {
-			return ele.ownerDocument.defaultView.getComputedStyle(elem, null)[prop];
+			return elem.ownerDocument.defaultView.getComputedStyle(elem, null)[prop];
+		}
+	}
+
+	function bind(elem, type, fn) {
+		if (elem.addEventListener) {
+			elem.addEventListener(type, fn, false);
+		} else if (elem.attachEvent) {
+			elem.attachEvent(type, fn);
+		} else {
+			elem['on' + type] = fn;
 		}
 	}
 
@@ -55,31 +66,43 @@
 		return origin;
 	}
 
-	function scrollToFixed(elems, options) {
+	function scrollToFixed(className, context) {
 
-		var target = options.context ? options.context : root,
-				origin = getOriginData(elems);
+		var Elements, Origin, Obj;
 
-		target.addEventListener('scroll', function() {
-			var scrollTop = target.scrollTop;	
+		Obj = context ? context : root;
+				
+		if (typeof className !== 'string') {
+			throw new Error('you must have used a string classname of elements');
+		}
 
-			each(elems, function(elem, index) {
+		Elements = $All(className);
+		Origin = getOriginData(Elements);
+
+		bind(Obj, 'scroll', function() {
+			var self = this,
+					scrollTop = self.scrollTop;
+
+			each(Elements, function(elem, index) {
 				var top = getOffset(elem).top,
-						initTop = target === window ? 0 : getOffset(target).top;
+						left = getOffset(elem).left,
+						initTop = getOffset(self).top;
 
 				if (scrollTop + initTop > top) {
 					elem.style.position = 'fixed';
 					elem.style.top = initTop + 'px';
+					elem.style.left = left + 'px';
 					elem.style.zIndex = 999;
 				}
 
-				if (scrollTop + initTop <= origin[index]) {
-					elems[index].style.position = 'static';
-					elems[index].style.top = 'auto';
-					elems[index].style.zIndex = '';
+				if (scrollTop + initTop <= Origin[index]) {
+					Elements[index].style.position = 'static';
+					Elements[index].style.top = 'auto';
+					elem.style.left = 'auto';
+					Elements[index].style.zIndex = '';
 				}
 			});
-		}, false);
+		});
 	}
 
 	root.scrollToFixed = scrollToFixed;
