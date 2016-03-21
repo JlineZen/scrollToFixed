@@ -14,6 +14,10 @@
 		}
 	}
 
+	function isWindow(obj) {
+		return (typeof obj === 'object' && obj.window === obj);
+	}
+
 	function $(id) {
 		return typeof id === 'string' ? document.getElementById(id) : null;
 	}
@@ -69,6 +73,10 @@
 	function scrollToFixed(className, context) {
 
 		var Elements, Origin, Obj;
+
+		if (context && context.nodeType !== 1) {
+			throw new Error('you must assign a DOMElement');
+		}
 
 		Obj = context ? context : root;
 				
